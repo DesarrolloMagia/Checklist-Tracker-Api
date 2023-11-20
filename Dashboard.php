@@ -15,7 +15,7 @@
 <nav class="navbar">
         <ul class="navbar-list">
         <li class="navbar-item"><a class="button-link" href="Report.php"></a></li>
-            <!-- Otros elementos de navegación, si es necesario -->
+        <li class="navbar-item"><a class="button-link-cerrar" href="Logout.php"></a></li>
         </ul>
     </nav>
     <div class="container">
