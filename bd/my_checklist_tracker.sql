@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2023 a las 20:50:37
+-- Tiempo de generación: 20-11-2023 a las 05:56:00
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `my_checklist_tracker`
 --
+CREATE DATABASE IF NOT EXISTS `my_checklist_tracker` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `my_checklist_tracker`;
 
 DELIMITER $$
 --
@@ -112,22 +114,38 @@ CREATE TABLE `tareas` (
 
 INSERT INTO `tareas` (`id`, `nombre`, `descripcion`, `fecha_compromiso`, `prioridad`, `responsable`, `estado`, `hora_culminacion`, `edited`) VALUES
 (8, 'Reunión de proyecto', 'Preparar agenda y documentos para la reunión del proyecto X', '2023-11-15', 'Alta', 'Juan Pérez', 'Completado', '07:45:00', 0),
-(9, 'Informe de ventas', 'Generar informe mensual de ventas y presentarlo al equipo de ventas', '2023-11-10', 'Media', 'María Gómez', 'Pendiente', '09:00:00', 0),
-(10, 'Entrenamiento del personal', 'Realizar sesión de entrenamiento para el personal nuevo', '2023-11-20', 'Baja', 'Luis Rodríguez', 'Pendiente', '12:15:00', 0),
-(11, 'Desarrollo de software', 'Programar nuevas funcionalidades para la aplicación cliente', '2023-12-01', 'Alta', 'Allan Ramirez', 'En Proceso', '08:20:00', 0),
-(12, 'Revisión de contratos', 'Revisar y actualizar los contratos con los proveedores', '2023-11-25', 'Media', 'Carlos Sánchez', 'Pendiente', '10:00:00', 0),
-(13, 'Mantenimiento del sitio web', 'Realizar tareas de mantenimiento y actualización del sitio web de la empresa', '2023-12-05', 'Baja', 'Elena López', 'Pendiente', '11:00:00', 0),
-(15, 'Informe de gastos', 'Generar informe trimestral de gastos y presentarlo a la dirección', '2023-12-15', 'Media', 'Sofía Ramírez', 'Pendiente', '15:15:00', 0),
+(9, 'Informe de ventas', 'Generar informe mensual de ventas y presentarlo al equipo de ventas', '2023-11-10', 'Media', 'María Gómez', 'Pendiente', '09:00:00', 1),
+(10, 'Entrenamiento del personal', 'Realizar sesión de entrenamiento para el personal nuevo', '2023-11-20', 'Baja', 'Luis Rodríguez', 'Completado', '12:15:00', 0),
+(11, 'Desarrollo de software', 'Programar nuevas funcionalidades para la aplicación cliente', '2023-12-01', 'Alta', 'Allan Ramirez', 'Completado', '08:20:00', 0),
+(12, 'Revisión de contratos', 'Revisar y actualizar los contratos con los proveedores', '2023-11-25', 'Media', 'Carlos Sánchez', 'En Proceso', '10:00:00', 1),
+(13, 'Mantenimiento del sitio web', 'Realizar tareas de mantenimiento y actualización del sitio web de la empresa', '2023-12-05', 'Baja', 'Elena López', 'En Proceso', '11:00:00', 1),
+(15, 'Informe de gastos', 'Generar informe trimestral de gastos y presentarlo a la dirección', '2023-12-15', 'Media', 'Sofía Ramírez', 'Completado', '15:15:00', 0),
 (16, 'Reclutamiento de personal', 'Entrevistar candidatos para los puestos vacantes', '2023-12-20', 'Baja', 'Javier Hernández', 'Pendiente', '13:45:00', 0),
-(17, 'Reunión de equipo', 'Realizar reunión semanal del equipo para revisar avances y metas', '2023-12-30', 'Alta', 'Isabel Torres', 'Pendiente', '15:35:00', 0),
-(18, 'Capacitación en seguridad', 'Brindar capacitación en seguridad en el lugar de trabajo', '2024-01-05', 'Media', 'Raúl Díaz', 'Pendiente', '12:00:00', 0),
-(19, 'Informe de calidad', 'Preparar informe de calidad de productos para la dirección', '2023-10-25', 'Baja', 'Rosalia Andrion', 'En Proceso', '18:00:00', 1),
+(17, 'Reunión de equipo', 'Realizar reunión semanal del equipo para revisar avances y metas', '2023-12-30', 'Alta', 'Isabel Torres', 'En Proceso', '15:35:00', 0),
+(18, 'Capacitación en seguridad', 'Brindar capacitación en seguridad en el lugar de trabajo', '2024-01-05', 'Media', 'Raúl Díaz', 'Completado', '12:00:00', 1),
+(19, 'Informe de calidad', 'Preparar informe de calidad de productos para la dirección', '2023-10-25', 'Baja', 'Rosalia Andrion', 'Completado', '18:00:00', 1),
 (20, 'Lanzamiento de producto', 'Preparar el lanzamiento del nuevo producto en el mercado', '2024-01-15', 'Alta', 'Miguel Rodríguez', 'Pendiente', '21:15:00', 0),
 (21, 'Revisión de marketing', 'Revisar y optimizar estrategias de marketing digital', '2024-01-20', 'Media', 'Laura López', 'Pendiente', '17:00:00', 0),
-(22, 'Auditoría interna', 'Realizar auditoría interna para asegurar el cumplimiento de normativas', '2024-01-25', 'Baja', 'Diego Martínez', 'Pendiente', '14:20:00', 0),
-(24, 'Tarea 1', 'Creación de reportes', '2023-11-23', 'Media', 'Alex', 'En Proceso', '18:00:00', 0),
-(25, 'Tarea 2', 'Creación de no se', '2023-11-10', 'Media', 'Isaac', 'Pendiente', '11:35:00', 0),
-(26, 'Reunión de equipo2', 'asdfasdf', '2023-12-30', 'Alta', 'Isabel Torres2', 'Pendiente', '19:54:00', 0);
+(22, 'Auditoría interna', 'Realizar auditoría interna para asegurar el cumplimiento de normativas', '2024-01-25', 'Alta', 'Diego Martínez', 'Pendiente', '14:20:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password_hash` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `password_hash`) VALUES
+(1, 'admin', '$2y$10$9UE7znqwKPA33z677QaJ2.WS90KcDAU10A0XKTh0N4cbaY1bagxyW');
 
 --
 -- Índices para tablas volcadas
@@ -140,6 +158,12 @@ ALTER TABLE `tareas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -148,6 +172,12 @@ ALTER TABLE `tareas`
 --
 ALTER TABLE `tareas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

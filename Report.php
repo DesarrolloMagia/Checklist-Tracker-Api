@@ -9,7 +9,8 @@
 <body>
 <nav class="navbar">
         <ul class="navbar-list">
-            <li class="navbar-item"><a class="button-link" href="Dashboard.php">Dashboard</a></li>
+            <li class="navbar-item"><a class="button-link" href="Dashboard.php"></a></li>
+            <li class="navbar-item"><a class="button-link-cerrar" href="Logout.php"></a></li>
         </ul>
     </nav>
     <div class="content-container">
