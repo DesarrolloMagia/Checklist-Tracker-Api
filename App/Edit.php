@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
         <html>
         <head>
             <title>Editar Tarea</title>
-            <link rel="stylesheet" type="text/css" href="/css/edit.css"> <!-- Enlaza tu archivo CSS aquí -->
+            <link rel="stylesheet" type="text/css" href="../css/edit.css"> 
         </head>
         <body>
             <div class="card">

@@ -14,7 +14,7 @@
     <nav class="navbar">
         <ul class="navbar-list">
             <li class="navbar-item"><a class="button-link" href="Report.php">Reportes</a></li>
-            <!-- Otros elementos de navegación, si es necesario -->
+            <li class="navbar-item"><a class="button-link-cerrar" href="Logout.php"></a></li>
         </ul>
     </nav>
 
@@ -55,96 +55,16 @@
                 </form>
             </div>
             <div class="kanban-block" id="pendientes" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <strong>PENDIENTES</strong>
-                <?php
-                require 'Connect.php';
-
-                $sql = "SELECT * FROM tareas WHERE estado = 'Pendiente'";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                $tareasPendientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                if (count($tareasPendientes) > 0) {
-                    foreach ($tareasPendientes as $tarea) {
-                        echo "<div class='tarea' draggable='true' ondragstart='drag(event)' id='tarea-" . $tarea['id'] . "'>";
-                        echo "<p>Nombre: " . $tarea['nombre'] . "</p>";
-                        echo "<p>Descripción: " . $tarea['descripcion'] . "</p>";
-                        echo "<p>Fecha de Compromiso: " . $tarea['fecha_compromiso'] . "</p>";
-                        echo "<p>Hora de Culminación: " . $tarea['hora_culminacion'] . "</p>";
-                        echo "<p>Prioridad: " . $tarea['prioridad'] . "</p>";
-                        echo "<p>Responsable: " . $tarea['responsable'] . "</p>";
-                        if ($tarea['edited'] == 1) {
-                            echo "<p><strong>Edited</strong></p>";
-                        }
-                        echo "<a href='./app/Edit.php?id=" . $tarea['id'] . "' class='btn-editar'>Editar</a>";
-                        echo "<a href='./app/Delete.php?id=" . $tarea['id'] . "' class='btn-eliminar'>Eliminar</a>";
-                        echo "</div>";
-                    }
-                } else {
-                    echo "No hay tareas pendientes.";
-                }
-                ?>
+                <strong class="kanban-form-title">PENDIENTES</strong>
+                <!-- Contenedor de tareas pendientes -->
             </div>
             <div class="kanban-block" id="procesos" ondrop="drop(event, 'En Proceso')" ondragover="allowDrop(event)">
-                <strong>EN PROCESO</strong>
-                <?php
-                $sql = "SELECT * FROM tareas WHERE estado = 'En Proceso'";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                $tareasEnProceso = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                if (count($tareasEnProceso) > 0) {
-                    foreach ($tareasEnProceso as $tarea) {
-                        echo "<div class='tarea' draggable='true' ondragstart='drag(event)' id='tarea-" . $tarea['id'] . "' data-estado='" . $tarea['estado'] . "'>";
-                        echo "<p>Nombre: " . $tarea['nombre'] . "</p>";
-                        echo "<p>Descripción: " . $tarea['descripcion'] . "</p>";
-                        echo "<p>Fecha de Compromiso: " . $tarea['fecha_compromiso'] . "</p>";
-                        echo "<p>Hora de Culminación: " . $tarea['hora_culminacion'] . "</p>";
-                        echo "<p>Prioridad: " . $tarea['prioridad'] . "</p>";
-                        echo "<p>Responsable: " . $tarea['responsable'] . "</p>";
-                        if ($tarea['edited'] == 1) {
-                            echo "<p><strong>Edited</strong></p>";
-                        }
-                        echo "<a href='./app/Edit.php?id=" . $tarea['id'] . "' class='btn-editar'>Editar</a>";
-                        echo "<a href='./app/Delete.php?id=" . $tarea['id'] . "' class='btn-eliminar'>Eliminar</a>";
-                        echo "</div>";
-                    }
-                } else {
-                    echo "No hay tareas en proceso.";
-                }
-                ?>
+                <strong >EN PROCESO</strong>
+                <!-- Contenedor de tareas en proceso -->
             </div>
             <div class="kanban-block" id="completados" ondrop="drop(event, 'Completado')" ondragover="allowDrop(event)">
                 <strong>COMPLETADOS</strong>
-                <?php
-                $sql = "SELECT * FROM tareas WHERE estado = 'Completado'";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                $tareasCompletadas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                if (count($tareasCompletadas) > 0) {
-                    foreach ($tareasCompletadas as $tarea) {
-                        echo "<div class='tarea' draggable='true' ondragstart='drag(event)' id='tarea-" . $tarea['id'] . "' data-estado='" . $tarea['estado'] . "'>";
-                        echo "<p>Nombre: " . $tarea['nombre'] . "</p>";
-                        echo "<p>Descripción: " . $tarea['descripcion'] . "</p>";
-                        echo "<p>Fecha de Compromiso: " . $tarea['fecha_compromiso'] . "</p>";
-                        echo "<p>Hora de Culminación: " . $tarea['hora_culminacion'] . "</p>";
-                        echo "<p>Prioridad: " . $tarea['prioridad'] . "</p>";
-                        echo "<p>Responsable: " . $tarea['responsable'] . "</p>";
-                        if ($tarea['edited'] == 1) {
-                            echo "<p><strong>Edited</strong></p>";
-                        }
-                        echo "<a href='./app/Edit.php?id=" . $tarea['id'] . "' class='btn-editar'>Editar</a>";
-                        echo "<a href='./app/Delete.php?id=" . $tarea['id'] . "' class='btn-eliminar'>Eliminar</a>";
-                        echo "</div>";
-                    }
-                } else {
-                    echo "No hay tareas completadas.";
-                }
-                ?>
+                <!-- Contenedor de tareas completadas -->
             </div>
         </div>
     </div>
