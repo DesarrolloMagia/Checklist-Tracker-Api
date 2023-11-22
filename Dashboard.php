@@ -15,7 +15,6 @@
 <nav class="navbar">
         <ul class="navbar-list">
         <li class="navbar-item"><a class="button-link" href="Report.php"></a></li>
-            <!-- Otros elementos de navegación, si es necesario -->
         </ul>
     </nav>
     <div class="container">
@@ -151,7 +150,6 @@
     <script type="text/javascript" charset="utf-8" src="./js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="./js/jquery-ui.min.js"></script>
     <script src="./js/script.js"></script>
-    <script src="./js/api.js"></script>
 </body>
 </html>
 <?

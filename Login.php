@@ -4,7 +4,6 @@ include 'connect.php'; // Incluye el archivo de conexión
 // Procesamiento del formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["login"])) {
-        // Lógica de inicio de sesión
         $username = $_POST["username"];
         $password = $_POST["password"];
 
@@ -40,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $newPassword = password_hash($_POST["new_password"], PASSWORD_DEFAULT); // Hash de la contraseña
 
         try {
-            // Consulta SQL para registrar al nuevo usuario con sentencia preparada
             $sql = "INSERT INTO usuarios (username, password_hash) VALUES (:newUsername, :newPassword)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':newUsername', $newUsername);
@@ -51,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Después de registrar, redirige a la página de inicio de sesión
             header("Location: inicio.php");
-            exit(); // Asegura que el script se detenga después de la redirección
+            exit(); 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -69,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="img js-fullheight" style="background-image: url(images/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(assets/bg.jpg);">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
