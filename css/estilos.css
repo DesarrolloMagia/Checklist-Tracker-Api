@@ -192,3 +192,16 @@ body {
     text-indent: -9999px; /* Oculta el texto del enlace */
     margin: 20px; /* Ajusta la separación desde el margen superior */
 }
+
+.button-link-cerrar {
+  position: fixed; /* Posición fija en la ventana del navegador */
+  top: 20px; /* Distancia desde la parte superior */
+  right: 20px; /* Distancia desde la derecha */
+  display: block;
+  width: 50px; /* Ancho de la imagen */
+  height: 50px; /* Altura de la imagen */
+  background-image: url('/assets/cerrar-sesion.png'); /* Ruta de tu imagen PNG */
+  background-size: cover; /* Ajusta el tamaño de la imagen para llenar el enlace */
+  text-indent: -9999px; /* Oculta el texto del enlace */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el enlace */
+}
