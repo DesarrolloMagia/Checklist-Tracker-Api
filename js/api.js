@@ -15,18 +15,6 @@ $(document).ready(function () {
 
     // Función para mostrar los datos en la página
     function mostrarDatos(tareas) {
-        // Limpiar contenedores existentes
-        $('#pendientes').empty();
-        $('#procesos').empty();
-        $('#completados').empty();
-
-        // Verificar si hay tareas en cada estado y mostrar mensaje apropiado
-        if (tareas.length === 0) {
-            $('#pendientes').html('<p>No hay tareas pendientes.</p>');
-            $('#procesos').html('<p>No hay tareas en proceso.</p>');
-            $('#completados').html('<p>No hay tareas completadas.</p>');
-            return;
-        }
 
         // Iterar sobre las tareas y mostrarlas en los contenedores correspondientes
         $.each(tareas, function (index, tarea) {

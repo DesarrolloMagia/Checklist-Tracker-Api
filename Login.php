@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Usuario registrado correctamente";
 
             // Después de registrar, redirige a la página de inicio de sesión
-            header("Location: inicio.php");
+            header("Location: Login.php");
             exit(); 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();

@@ -59,11 +59,11 @@
                 <!-- Contenedor de tareas pendientes -->
             </div>
             <div class="kanban-block" id="procesos" ondrop="drop(event, 'En Proceso')" ondragover="allowDrop(event)">
-                <strong >EN PROCESO</strong>
+                <strong class="kanban-form-title">EN PROCESO</strong>
                 <!-- Contenedor de tareas en proceso -->
             </div>
             <div class="kanban-block" id="completados" ondrop="drop(event, 'Completado')" ondragover="allowDrop(event)">
-                <strong>COMPLETADOS</strong>
+                <strong class="kanban-form-title">COMPLETADOS</strong>
                 <!-- Contenedor de tareas completadas -->
             </div>
         </div>

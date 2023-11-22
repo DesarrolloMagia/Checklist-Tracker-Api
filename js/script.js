@@ -1,17 +1,19 @@
 function updateTaskStatus(taskId, newStatus) {
     $.ajax({
-        url: 'app/update.php',
-        method: 'POST',
-        data: {
-            taskId: taskId,
-            newState: newStatus
-        },
+        url: 'api.php',
+        method: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            id: taskId,
+            estado: newStatus
+        }),
         success: function(response) {
             console.log("Tarea actualizada con éxito.");
-            location.reload();
+            // Aquí puedes actualizar solo la parte de la interfaz que ha cambiado en lugar de recargar toda la página
+            // Por ejemplo, puedes mover el elemento en la interfaz según el nuevo estado
         },
         error: function(error) {
-            console.error("Error al actualizar la tarea.");
+            console.error("Error al actualizar la tarea:", error);
         }
     });
 }
@@ -25,23 +27,23 @@ $(document).ready(function() {
 
             // Obtiene el estado actual de la tarea
             var currentState = ui.item.data("estado");
+            var newStatus; // Inicializa newStatus
 
             if (targetKanbanBlock === "pendientes") {
-                var newStatus = 'Pendiente';
-                updateTaskStatus(taskId, newStatus);
-            } else if (targetKanbanBlock === "procesos" && currentState !== 'Pendiente') {
-                var newStatus = 'En Proceso';
-                updateTaskStatus(taskId, newStatus);
-            } else if (targetKanbanBlock === "completados" && currentState === 'En Proceso') {
-                var newStatus = 'Completado';
-                updateTaskStatus(taskId, newStatus);
+                newStatus = 'Pendiente';
+            } else if (targetKanbanBlock === "procesos" && currentState !== 'En Proceso') {
+                newStatus = 'En Proceso';
+            } else if (targetKanbanBlock === "completados" && currentState !== 'Completado') {
+                newStatus = 'Completado';
             }
 
-            console.log("taskId: " + taskId);
-            console.log("targetKanbanBlock: " + targetKanbanBlock);
-            console.log("currentState: " + currentState);
-            console.log("newStatus: " + newStatus);
-
+            if (newStatus) {
+                updateTaskStatus(taskId, newStatus);
+                console.log("taskId: " + taskId);
+                console.log("targetKanbanBlock: " + targetKanbanBlock);
+                console.log("currentState: " + currentState);
+                console.log("newStatus: " + newStatus);
+            }
         }
     });
 

@@ -31,25 +31,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo json_encode(['error' => 'Error al crear la tarea: ' . $e->getMessage()]);
     }
 
-} elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+}  elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     // Actualizar una tarea existente
     $data = json_decode(file_get_contents("php://input"), true);
 
     $taskId = $data['id'];
-    $nombre = $data['nombre'];
-    $descripcion = $data['descripcion'];
-    $fechaCompromiso = $data['fecha_compromiso'];
-    $horaCulminacion = $data['hora_culminacion'];
-    $prioridad = $data['prioridad'];
-    $responsable = $data['responsable'];
+    $estado = $data['estado'];
 
     $sql = "UPDATE tareas 
-            SET nombre='$nombre', descripcion='$descripcion', fecha_compromiso='$fechaCompromiso', 
-                hora_culminacion='$horaCulminacion', prioridad='$prioridad', responsable='$responsable'
-            WHERE id=$taskId";
+            SET estado=?
+            WHERE id=?";
 
     try {
-        $conn->exec($sql);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$estado, $taskId]);
         echo json_encode(['message' => 'Tarea actualizada con éxito']);
 
     } catch (PDOException $e) {
